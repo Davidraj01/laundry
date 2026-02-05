@@ -39,9 +39,21 @@ const ProcessSection = () => {
   ];
 
   return (
-    <section id="process"className="relative bg-slate-950 py-20 sm:py-24 px-4 sm:px-6 md:px-12 lg:px-24 overflow-hidden">
-      {/* Glow background */}
-      <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[520px] sm:w-[600px] h-[520px] sm:h-[600px] bg-purple-600/30 blur-[160px]" />
+    <section
+      id="process"
+      className="
+        relative
+        py-20 sm:py-24
+        px-4 sm:px-6 md:px-12 lg:px-24
+        overflow-hidden
+        bg-gradient-to-b
+        from-slate-50
+        via-slate-100
+        to-slate-50
+      "
+    >
+      {/* Subtle glow */}
+      <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[520px] sm:w-[600px] h-[520px] sm:h-[600px] bg-cyan-400/20 blur-[160px]" />
 
       <div className="relative max-w-7xl mx-auto">
         {/* Header */}
@@ -53,15 +65,15 @@ const ProcessSection = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16 sm:mb-20"
         >
-          <span className="inline-block mb-4 text-xs tracking-widest uppercase bg-gradient-to-r from-cyan-400 to-purple-500 text-transparent bg-clip-text">
+          <span className="inline-block mb-4 text-xs tracking-widest uppercase bg-gradient-to-r from-cyan-500 to-purple-500 text-transparent bg-clip-text">
             How We Work
           </span>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 mb-4">
             Our Smart Laundry Process
           </h2>
 
-          <p className="text-slate-400 max-w-2xl mx-auto text-sm sm:text-base">
+          <p className="text-slate-600 max-w-2xl mx-auto text-sm sm:text-base">
             AI-inspired workflow designed for hygiene, fabric care, and perfection.
           </p>
         </motion.div>
@@ -81,8 +93,8 @@ const ProcessSection = () => {
               } items-center gap-10 sm:gap-14`}
             >
               {/* Image */}
-              <div className="w-full lg:w-1/2 relative">
-                <div className="relative rounded-3xl overflow-hidden group">
+              <div className="w-full lg:w-1/2">
+                <div className="relative rounded-3xl overflow-hidden group shadow-lg">
                   <img
                     src={step.image}
                     alt={step.title}
@@ -94,17 +106,26 @@ const ProcessSection = () => {
 
               {/* Content */}
               <div className="w-full lg:w-1/2">
-                <div className="relative backdrop-blur-xl bg-white/10 border border-white/20 rounded-3xl p-6 sm:p-8 md:p-10 shadow-[0_0_40px_rgba(168,85,247,0.15)] hover:shadow-[0_0_60px_rgba(34,211,238,0.25)] transition">
+                <div className="
+                  relative
+                  bg-white
+                  border border-black/10
+                  rounded-3xl
+                  p-6 sm:p-8 md:p-10
+                  shadow-[0_20px_50px_rgba(0,0,0,0.12)]
+                  hover:shadow-[0_30px_70px_rgba(34,211,238,0.25)]
+                  transition
+                ">
                   {/* Step number */}
                   <div className="absolute -top-5 -left-5 sm:-top-6 sm:-left-6 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gradient-to-r from-cyan-400 to-purple-500 text-slate-900 font-bold flex items-center justify-center text-base sm:text-lg shadow-lg">
                     {step.id}
                   </div>
 
-                  <h3 className="text-xl sm:text-2xl font-semibold text-white mb-4">
+                  <h3 className="text-xl sm:text-2xl font-semibold text-slate-900 mb-4">
                     {step.title}
                   </h3>
 
-                  <p className="text-slate-300 leading-relaxed text-sm sm:text-base">
+                  <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
                     {step.desc}
                   </p>
 
