@@ -84,7 +84,7 @@ const BookingSection = () => {
             {/* CTA */}
             <button
               type="button"
-              className="w-full mt-4 bg-purple-600 hover:bg-purple-700 text-white
+              className="w-full mt-4 bg-blue-600 hover:bg-purple-700 text-white
               font-bold py-4 sm:py-5 rounded-2xl shadow-[0_20px_40px_-10px_rgba(124,43,217,0.4)]
               transition-all flex items-center justify-center gap-3 text-base sm:text-lg hover:scale-[1.02]"
             >
@@ -101,8 +101,7 @@ const BookingSection = () => {
             className="w-full h-full object-cover"
           />
 
-          {/* Soft Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-tr from-purple-900/40 via-purple-700/20 to-transparent" />
+         
 
           {/* Optional Text Overlay */}
           <div className="absolute bottom-6 left-6 right-6 text-white">
