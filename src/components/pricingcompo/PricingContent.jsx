@@ -4,9 +4,9 @@ import { Check } from "lucide-react";
 const PricingSection = () => {
   const plans = [
     {
-      badge: "First Order",
+      badge: "Order Now",
       title: "Laundry",
-      price: "₹7",
+      price: "₹120",
       unit: "per KG",
       subtitle: "Wash, dry & fold service",
       features: [
@@ -20,7 +20,7 @@ const PricingSection = () => {
     {
       badge: "Most Popular",
       title: "Dry Cleaning",
-      price: "₹99",
+      price: "₹200",
       unit: "starting from",
       subtitle: "Premium garment care",
       features: [
@@ -34,7 +34,7 @@ const PricingSection = () => {
     },
     {
       title: "Steam Ironing",
-      price: "₹10",
+      price: "₹12",
       unit: "per piece",
       subtitle: "Crisp, wrinkle-free finish",
       features: [
@@ -47,7 +47,7 @@ const PricingSection = () => {
     },
     {
       title: "Shoe Cleaning",
-      price: "₹199",
+      price: "₹250",
       unit: "per pair",
       subtitle: "Complete shoe restoration",
       features: [

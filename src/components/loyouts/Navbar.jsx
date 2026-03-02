@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Phone, Menu, X } from "lucide-react";
 
@@ -16,10 +16,7 @@ const navAnim = {
 };
 
 const mobileMenuAnim = {
-  hidden: {
-    opacity: 0,
-    clipPath: "inset(0 0 100% 0)",
-  },
+  hidden: { opacity: 0, clipPath: "inset(0 0 100% 0)" },
   show: {
     opacity: 1,
     clipPath: "inset(0 0 0% 0)",
@@ -32,13 +29,49 @@ const mobileMenuAnim = {
   },
 };
 
-/* ------------------ COMPONENT ------------------ */
-
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [visits, setVisits] = useState(null);
 
   const toggleMenu = useCallback(() => {
     setIsOpen((prev) => !prev);
+  }, []);
+
+  /* -------- REAL VISIT COUNTER (100% REAL) -------- */
+  useEffect(() => {
+    const namespace = "divinelaundrychennai2026";
+    const key = "homepage";
+
+    const updateCounter = async () => {
+      try {
+        let url = `https://api.counterapi.dev/v1/${namespace}/${key}`;
+        const hasVisited = sessionStorage.getItem("visit_counted");
+
+        // React Strict Mode calls useEffect twice. 
+        // Set the storage immediately so the second call doesn't also increment it.
+        if (!hasVisited) {
+          url += "/up";
+          sessionStorage.setItem("visit_counted", "true");
+        } else {
+          // Adding a trailing slash prevents a 301 Redirect which breaks CORS
+          url += "/";
+        }
+
+        const response = await fetch(url);
+        const data = await response.json();
+
+        if (data && typeof data.count === "number") {
+          setVisits(data.count);
+        } else {
+          setVisits(0);
+        }
+      } catch (error) {
+        console.error("Counter error:", error);
+        setVisits(0);
+      }
+    };
+
+    updateCounter();
   }, []);
 
   return (
@@ -48,11 +81,12 @@ const Navbar = () => {
       animate="show"
       className="sticky top-0 z-50 w-full"
     >
-      {/* Glass Backdrop */}
+      {/* Glass Background */}
       <div className="absolute inset-0 bg-white/90 backdrop-blur-xl border-b border-black/5 pointer-events-none" />
 
       <div className="relative flex items-center justify-between px-5 md:px-12 lg:px-24 py-4">
-        {/* ---------- LOGO ---------- */}
+
+        {/* LOGO */}
         <div className="flex items-center gap-3 cursor-pointer z-50">
           <div className="w-10 h-10 rounded-lg bg-blue-600 text-white flex items-center justify-center font-semibold text-lg shadow-sm">
             D
@@ -67,7 +101,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* ---------- DESKTOP LINKS ---------- */}
+        {/* DESKTOP LINKS */}
         <div className="hidden lg:flex items-center gap-12 text-sm font-medium text-gray-600">
           {NAV_LINKS.map((item) => (
             <motion.a
@@ -82,8 +116,14 @@ const Navbar = () => {
           ))}
         </div>
 
-        {/* ---------- ACTIONS ---------- */}
-        <div className="flex items-center gap-2 md:gap-4 z-50">
+        {/* ACTIONS */}
+        <div className="flex items-center gap-3 md:gap-5 z-50">
+
+          {/* 👁 REAL VISIT COUNT */}
+          <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-medium shadow-sm">
+            👁 {visits !== null ? visits.toLocaleString() : "Loading..."} Visits
+          </div>
+
           {/* Call Button */}
           <button
             aria-label="Call Divine Laundry"
@@ -109,7 +149,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* ---------- MOBILE MENU ---------- */}
+      {/* MOBILE MENU */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
