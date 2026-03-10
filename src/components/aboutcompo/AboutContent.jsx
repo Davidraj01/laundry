@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   ShieldCheck,
   Zap,
@@ -6,211 +6,105 @@ import {
   IndianRupee,
   Layers,
   Leaf,
+  ArrowRight
 } from "lucide-react";
 
 const AboutSection = () => {
-  const [activeCard, setActiveCard] = useState(null);
-
   const features = [
     {
-      title: "Expert Care",
-      desc: "Trained professionals handle your garments with utmost care and precision.",
-      icon: ShieldCheck,
-      color: "emerald",
-    },
-    {
-      title: "Express Service",
-      desc: "Fast turnaround time without compromising washing quality.",
-      icon: Zap,
-      color: "amber",
-    },
-    {
-      title: "Hassle-Free",
-      desc: "Smooth doorstep pickup and delivery experience.",
-      icon: Smile,
-      color: "rose",
-      highlight: true,
-    },
-    {
-      title: "Affordable Pricing",
-      desc: "Premium laundry service at pocket-friendly prices.",
-      icon: IndianRupee,
-      color: "blue",
-    },
-    {
       title: "Separate Wash",
-      desc: "Your clothes are washed separately, never mixed.",
+      desc: "Your clothes are never mixed with others. Hygiene is our priority.",
       icon: Layers,
-      color: "violet",
+      className: "md:col-span-2 bg-gradient-to-br from-violet-50 to-white",
+      iconBg: "bg-violet-500",
     },
     {
-      title: "Fabric-Safe",
-      desc: "Gentle wash suitable for all fabric types.",
+      title: "Express",
+      desc: "24h Turnaround.",
+      icon: Zap,
+      className: "col-span-1 bg-amber-50/50",
+      iconBg: "bg-amber-500",
+    },
+    {
+      title: "Eco-Friendly",
+      desc: "Gentle detergents that love your skin and the planet.",
       icon: Leaf,
-      color: "green",
+      className: "col-span-1 bg-emerald-50/50",
+      iconBg: "bg-emerald-500",
+    },
+    {
+      title: "Expert Handling",
+      desc: "From silk to wool, we treat every fiber with professional precision.",
+      icon: ShieldCheck,
+      className: "md:col-span-2 bg-gradient-to-tr from-blue-50 to-white",
+      iconBg: "bg-blue-500",
     },
   ];
 
-  const colorMap = {
-    emerald: "bg-emerald-50 text-emerald-600",
-    amber: "bg-amber-50 text-amber-600",
-    rose: "bg-rose-50 text-rose-600",
-    blue: "bg-blue-50 text-blue-600",
-    violet: "bg-violet-50 text-violet-600",
-    green: "bg-green-50 text-green-600",
-  };
-
   return (
-    <section id="about"className="min-h-screen bg-white px-4 sm:px-6 md:px-12 lg:px-24 py-24">
-      {/* HEADER */}
-      <div className="max-w-4xl mx-auto text-center mb-20 sm:mb-24">
-        <span className="inline-block bg-purple-100 text-purple-800 text-xs font-bold px-5 py-2 rounded-full mb-8">
-          About Us
-        </span>
+    <section className="relative overflow-hidden bg-[#fafafa] py-24 px-6 lg:px-24">
+      {/* Decorative Background Blobs */}
+      <div className="absolute top-0 -left-20 w-96 h-96 bg-purple-200/40 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 -right-20 w-96 h-96 bg-blue-200/30 rounded-full blur-3xl" />
 
-        <h2 className="text-4xl md:text-6xl font-extrabold mb-6">
-          Your Trusted{" "}
-          <span className="text-purple-700">Laundry Partner</span>
-        </h2>
-
-        <p className="text-base sm:text-lg md:text-xl text-slate-600">
-          Fresh, hygienic and perfectly pressed clothes with expert care.
-        </p>
-      </div>
-
-      {/* CARDS */}
-      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12 mb-28">
-        {features.map((item, index) => {
-          const isActive = activeCard === index;
-          const Icon = item.icon;
-
-          return (
-            <div
-              key={index}
-              onClick={() => setActiveCard(isActive ? null : index)}
-              className={`
-                group relative rounded-3xl p-[2px] cursor-pointer
-                transition-all duration-500
-                hover:-translate-y-3 hover:scale-[1.05]
-                ${isActive ? "animate-border" : "bg-slate-200"}
-              `}
-            >
-              {/* ANIMATED BORDER */}
-              <div
-                className={`
-                  absolute inset-0 rounded-3xl
-                  bg-gradient-to-r from-purple-500 via-indigo-500 to-cyan-400
-                  opacity-0
-                  ${isActive ? "opacity-100 animate-border" : ""}
-                `}
-              />
-
-              {/* CARD */}
-              <div
-                className={`
-                  relative z-10 rounded-3xl p-8 sm:p-10 h-full
-                  bg-white/90 backdrop-blur-xl
-                  transition-all duration-500
-                  ${
-                    isActive
-                      ? "shadow-[0_40px_100px_-20px_rgba(168,85,247,0.6)]"
-                      : "shadow-[0_20px_60px_-20px_rgba(0,0,0,0.15)]"
-                  }
-                `}
-              >
-                {/* ICON */}
-                <div
-                  className={`
-                    w-16 h-16 flex items-center justify-center rounded-2xl mb-6
-                    shadow-xl
-                    ${colorMap[item.color]}
-                    ${
-                      isActive
-                        ? "animate-iconSpin scale-110"
-                        : "group-hover:animate-iconBounce"
-                    }
-                  `}
-                >
-                  <Icon className="w-7 h-7" />
-                </div>
-
-                <h3 className="text-2xl font-bold mb-3 text-slate-900">
-                  {item.title}
-                </h3>
-
-                <p className="text-slate-600 leading-relaxed">
-                  {item.desc}
-                </p>
-
-                {isActive && (
-                  <div className="absolute top-4 right-4 w-3 h-3 bg-purple-500 rounded-full animate-pulse" />
-                )}
-              </div>
-            </div>
-          );
-        })}
-      </div>
-
-      {/* STATS */}
-      <div className="max-w-7xl mx-auto rounded-[40px] border-[3px] border-purple-400 bg-gradient-to-br from-[#faf7ff] to-[#f4f1ff] px-8 sm:px-10 py-14 sm:py-16 flex flex-col lg:flex-row items-center justify-between gap-12 shadow-xl">
-        <div className="text-center lg:text-left">
-          <h3 className="text-3xl font-extrabold mb-2">
-            Serving Chennai with Pride
-          </h3>
-          <p className="text-slate-600">
-            Trusted by 1000+ happy customers
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* HEADER SECTION */}
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-20">
+          <div className="max-w-2xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-purple-600 font-bold mb-4">
+              Premium Laundry Service
+            </h2>
+            <h3 className="text-5xl md:text-7xl font-light text-slate-900 leading-tight">
+              We take the <span className="font-serif italic text-purple-700">load</span> off your hands.
+            </h3>
+          </div>
+          <p className="max-w-xs text-slate-500 text-lg leading-relaxed border-l-2 border-purple-200 pl-6">
+            Providing Chennai with professional garment care since 2019. 
+            Freshness, delivered to your door.
           </p>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-12 sm:gap-16">
-          <Stat value="1000+" label="Customers" />
-          <Stat value="5+" label="Years" />
-          <Stat value="4.9★" label="Rating" />
+        {/* BENTO GRID */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
+          {features.map((f, i) => (
+            <div
+              key={i}
+              className={`group p-10 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 ${f.className}`}
+            >
+              <div className={`w-14 h-14 ${f.iconBg} rounded-2xl flex items-center justify-center text-white mb-8 shadow-lg group-hover:rotate-12 transition-transform`}>
+                <f.icon size={28} />
+              </div>
+              <h4 className="text-2xl font-bold text-slate-900 mb-4">{f.title}</h4>
+              <p className="text-slate-600 leading-relaxed">{f.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* INTERACTIVE STATS BAR */}
+        <div className="bg-white/60 backdrop-blur-md rounded-[3rem] border border-white p-12 shadow-2xl flex flex-wrap justify-around items-center gap-12">
+          <StatBlock number="10k+" label="Clothes Cleaned" />
+          <div className="hidden md:block h-12 w-[1px] bg-slate-200" />
+          <StatBlock number="1k+" label="Happy Clients" />
+          <div className="hidden md:block h-12 w-[1px] bg-slate-200" />
+          <StatBlock number="4.9" label="Avg Rating" isStar />
+          
+          <button className="bg-purple-700 text-white px-8 py-4 rounded-full font-bold flex items-center gap-3 hover:bg-purple-800 transition-all hover:shadow-lg hover:px-10">
+            Book a Wash <ArrowRight size={20} />
+          </button>
         </div>
       </div>
-
-      {/* ANIMATIONS */}
-      <style>{`
-        @keyframes borderMove {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-
-        @keyframes iconBounce {
-          0%, 100% { transform: scale(1); }
-          50% { transform: scale(1.25) rotate(8deg); }
-        }
-
-        @keyframes iconSpin {
-          0% { transform: rotate(0deg) scale(1); }
-          50% { transform: rotate(180deg) scale(1.3); }
-          100% { transform: rotate(360deg) scale(1); }
-        }
-
-        .animate-border {
-          background-size: 300% 300%;
-          animation: borderMove 6s ease infinite;
-        }
-
-        .animate-iconBounce {
-          animation: iconBounce 0.6s ease-in-out;
-        }
-
-        .animate-iconSpin {
-          animation: iconSpin 0.8s ease-in-out;
-        }
-      `}</style>
     </section>
   );
 };
 
-const Stat = ({ value, label }) => (
+const StatBlock = ({ number, label, isStar }) => (
   <div className="text-center">
-    <p className="text-4xl sm:text-5xl font-black text-purple-700">{value}</p>
-    <p className="mt-2 text-sm uppercase tracking-widest text-slate-500">
+    <div className="text-4xl font-black text-slate-900 flex items-center justify-center">
+      {number}{isStar && <span className="text-amber-400 text-2xl ml-1">★</span>}
+    </div>
+    <div className="text-slate-500 text-xs uppercase tracking-widest mt-2 font-semibold">
       {label}
-    </p>
+    </div>
   </div>
 );
 

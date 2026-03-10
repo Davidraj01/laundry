@@ -1,117 +1,126 @@
 import React from "react";
-import { Send } from "lucide-react";
+import { ArrowRight, MapPin, Phone, User, Sparkles } from "lucide-react";
 
 const BookingSection = () => {
   return (
     <section
       id="booking"
-      className="min-h-screen min-h-[100svh] bg-white py-20 sm:py-24 px-4 sm:px-6 md:px-12 lg:px-24"
+      className="bg-white min-h-screen py-24 px-6 md:px-12"
     >
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
-        {/* LEFT — Booking Form */}
-        <div className="bg-white border border-slate-100 rounded-[32px] sm:rounded-[42px] p-6 sm:p-8 md:p-12 shadow-[0_40px_100px_-30px_rgba(124,43,217,0.15)]">
-          <span className="inline-block bg-purple-100 text-purple-700 text-xs font-semibold px-5 py-2 rounded-full uppercase tracking-wider mb-6">
-            Book Now
-          </span>
-
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 mb-4 leading-tight">
-            Schedule Your Pickup
+      <div className="max-w-7xl mx-auto">
+        {/* Header Section - Clean & Centered */}
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-slate-100 mb-6">
+            <Sparkles size={14} className="text-slate-400" />
+            <span className="text-[10px] font-bold tracking-[0.2em] text-slate-500 uppercase">
+              Premium Care
+            </span>
+          </div>
+          <h2 className="text-4xl md:text-6xl font-light tracking-tight text-slate-900 mb-6">
+            Effortless <span className="font-serif italic">Laundry</span> Booking
           </h2>
-
-          <p className="text-slate-500 font-medium mb-10 sm:mb-12 max-w-md text-sm sm:text-base">
-            Fill in your details and we’ll take care of the rest — fast, easy &
-            reliable.
-          </p>
-
-          <form className="space-y-6 sm:space-y-7">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
-              {/* Name */}
-              <div>
-                <label className="block text-sm font-semibold text-slate-700 mb-2 ml-1">
-                  Full Name
-                </label>
-                <input
-                  type="text"
-                  placeholder="Your name"
-                  className="w-full px-5 sm:px-6 py-4 rounded-2xl bg-slate-50 text-slate-900 font-medium
-                  focus:ring-2 focus:ring-purple-600 outline-none transition-all"
-                />
-              </div>
-
-              {/* Phone */}
-              <div>
-                <label className="block text-sm font-semibold text-slate-700 mb-2 ml-1">
-                  Phone Number
-                </label>
-                <input
-                  type="tel"
-                  placeholder="+91 99942 64467"
-                  className="w-full px-5 sm:px-6 py-4 rounded-2xl bg-slate-50 text-slate-900 font-medium
-                  focus:ring-2 focus:ring-purple-600 outline-none transition-all"
-                />
-              </div>
-            </div>
-
-            {/* Service */}
-            <div>
-              <label className="block text-sm font-semibold text-slate-700 mb-2 ml-1">
-                Service Type
-              </label>
-              <select
-                className="w-full px-5 sm:px-6 py-4 rounded-2xl bg-slate-50 text-slate-900 font-medium
-                focus:ring-2 focus:ring-purple-600 outline-none cursor-pointer"
-              >
-                <option>Select a service</option>
-                <option>Laundry (Wash & Fold)</option>
-                <option>Dry Cleaning</option>
-                <option>Steam Ironing</option>
-              </select>
-            </div>
-
-            {/* Address */}
-            <div>
-              <label className="block text-sm font-semibold text-slate-700 mb-2 ml-1">
-                Pickup Address
-              </label>
-              <textarea
-                rows={4}
-                placeholder="Enter your complete address for pickup"
-                className="w-full px-5 sm:px-6 py-4 rounded-2xl bg-slate-50 text-slate-900 font-medium resize-none
-                focus:ring-2 focus:ring-purple-600 outline-none transition-all"
-              />
-            </div>
-
-            {/* CTA */}
-            <button
-              type="button"
-              className="w-full mt-4 bg-blue-600 hover:bg-purple-700 text-white
-              font-bold py-4 sm:py-5 rounded-2xl shadow-[0_20px_40px_-10px_rgba(124,43,217,0.4)]
-              transition-all flex items-center justify-center gap-3 text-base sm:text-lg hover:scale-[1.02]"
-            >
-              Book Pickup Now <Send size={20} />
-            </button>
-          </form>
+          <div className="h-1 w-12 bg-slate-900 mx-auto"></div>
         </div>
 
-        {/* RIGHT — Image Section */}
-        <div className="relative w-full h-[420px] sm:h-[520px] lg:h-[640px] rounded-[32px] sm:rounded-[42px] overflow-hidden shadow-[0_40px_120px_-40px_rgba(0,0,0,0.25)]">
-          <img
-            src="public/inside4.jpg"
-            alt="Laundry Pickup Service"
-            className="w-full h-full object-cover"
-          />
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+          
+          {/* LEFT: The Form - Minimalist & Airy */}
+          <div className="lg:col-span-5 space-y-10">
+            <form className="space-y-8">
+              {/* Field: Name */}
+              <div className="relative border-b border-slate-200 pb-2 focus-within:border-slate-900 transition-colors">
+                <label className="text-[10px] uppercase tracking-widest font-bold text-slate-400 block mb-1">
+                  Full Name
+                </label>
+                <div className="flex items-center gap-3">
+                  <User size={18} className="text-slate-300" />
+                  <input
+                    type="text"
+                    placeholder="Enter your name"
+                    className="w-full bg-transparent py-2 text-slate-900 placeholder:text-slate-300 outline-none text-lg font-medium"
+                  />
+                </div>
+              </div>
 
-         
+              {/* Field: Phone */}
+              <div className="relative border-b border-slate-200 pb-2 focus-within:border-slate-900 transition-colors">
+                <label className="text-[10px] uppercase tracking-widest font-bold text-slate-400 block mb-1">
+                  Contact Number
+                </label>
+                <div className="flex items-center gap-3">
+                  <Phone size={18} className="text-slate-300" />
+                  <input
+                    type="tel"
+                    placeholder="+91 00000 00000"
+                    className="w-full bg-transparent py-2 text-slate-900 placeholder:text-slate-300 outline-none text-lg font-medium"
+                  />
+                </div>
+              </div>
 
-          {/* Optional Text Overlay */}
-          <div className="absolute bottom-6 left-6 right-6 text-white">
-            <h3 className="text-xl sm:text-2xl font-extrabold">
-              Fresh Clothes. Zero Effort.
-            </h3>
-            <p className="text-sm sm:text-base text-white/90 mt-1 max-w-sm">
-              Doorstep pickup • Professional care • On-time delivery
-            </p>
+              {/* Field: Service */}
+              <div className="space-y-3">
+                <label className="text-[10px] uppercase tracking-widest font-bold text-slate-400 block">
+                  Service Type
+                </label>
+                <div className="grid grid-cols-2 gap-3">
+                  {["Wash & Fold", "Dry Cleaning", "Steam Ironing", "Express"].map((service) => (
+                    <button
+                      key={service}
+                      type="button"
+                      className="px-4 py-3 text-sm font-medium border border-slate-100 rounded-xl text-slate-600 hover:border-slate-900 hover:text-slate-900 transition-all text-left"
+                    >
+                      {service}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Field: Address */}
+              <div className="relative border-b border-slate-200 pb-2 focus-within:border-slate-900 transition-colors">
+                <label className="text-[10px] uppercase tracking-widest font-bold text-slate-400 block mb-1">
+                  Pickup Address
+                </label>
+                <div className="flex items-start gap-3">
+                  <MapPin size={18} className="text-slate-300 mt-3" />
+                  <textarea
+                    rows={2}
+                    placeholder="Where should we pick up?"
+                    className="w-full bg-transparent py-2 text-slate-900 placeholder:text-slate-300 outline-none text-lg font-medium resize-none"
+                  />
+                </div>
+              </div>
+
+              {/* CTA Button */}
+              <button
+                type="button"
+                className="w-full h-16 bg-slate-900 text-white rounded-full font-bold flex items-center justify-center gap-4 hover:bg-slate-800 transition-all active:scale-[0.98]"
+              >
+                Schedule Now <ArrowRight size={20} />
+              </button>
+            </form>
           </div>
+
+          {/* RIGHT: The Visual - High End & Editorial */}
+          <div className="lg:col-span-7 h-full">
+            <div className="relative rounded-[3rem] overflow-hidden bg-slate-50 aspect-[4/5] lg:aspect-auto lg:h-[700px]">
+              <img
+                src="public/inside2.jpg"
+                alt="Clean Service"
+                className="w-full h-full object-cover"
+              />
+              
+              {/* Floating Info Card */}
+              <div className="absolute bottom-10 left-10 p-8 bg-white/80 backdrop-blur-xl rounded-3xl border border-white/40 max-w-xs shadow-2xl">
+                <p className="text-slate-900 font-bold text-xl mb-2">
+                  Pristine Quality.
+                </p>
+                <p className="text-slate-500 text-sm leading-relaxed">
+                  Every garment is treated with biological detergents and gentle steam to ensure longevity and freshness.
+                </p>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
