@@ -79,23 +79,23 @@ const Navbar = () => {
       variants={navAnim}
       initial="hidden"
       animate="show"
-      className="sticky top-0 z-50 w-full"
+      className="fixed top-0 z-[999] w-full"
     >
       {/* Glass Background */}
       <div className="absolute inset-0 bg-white/90 backdrop-blur-xl border-b border-black/5 pointer-events-none" />
 
-      <div className="relative flex items-center justify-between px-5 md:px-12 lg:px-24 py-4">
+      <div className="relative flex items-center justify-between px-3 sm:px-5 md:px-12 lg:px-24 py-3 sm:py-4 w-full">
 
         {/* LOGO */}
-        <div className="flex items-center gap-3 cursor-pointer z-50">
-          <div className="w-10 h-10 rounded-lg bg-blue-600 text-white flex items-center justify-center font-semibold text-lg shadow-sm">
+        <div className="flex items-center gap-2 sm:gap-3 cursor-pointer z-50 shrink-0">
+          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-blue-600 text-white flex items-center justify-center font-semibold text-sm sm:text-lg shadow-sm shrink-0">
             D
           </div>
-          <div>
-            <h3 className="text-[17px] font-semibold text-gray-900 leading-none">
+          <div className="flex flex-col">
+            <h3 className="text-[14px] sm:text-[17px] font-semibold text-gray-900 leading-none">
               Divine Laundry
             </h3>
-            <p className="text-[10px] text-gray-500 tracking-wide mt-1">
+            <p className="text-[9px] sm:text-[10px] text-gray-500 tracking-wide mt-1">
               Premium Fabric Care
             </p>
           </div>
@@ -117,34 +117,36 @@ const Navbar = () => {
         </div>
 
         {/* ACTIONS */}
-        <div className="flex items-center gap-3 md:gap-5 z-50">
+        <div className="flex items-center gap-2 sm:gap-3 lg:gap-5 z-50 shrink-0">
 
           {/* 👁 REAL VISIT COUNT */}
-          <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-medium shadow-sm">
-            👁 {visits !== null ? visits.toLocaleString() : "Loading..."} Visits
+          <div className="flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-[10px] sm:text-xs font-medium shadow-sm whitespace-nowrap">
+            <span className="text-[12px] sm:text-base leading-none">👁</span> 
+            <span>{visits !== null ? visits.toLocaleString() : "..."}</span> 
+            <span className="hidden sm:inline">Visits</span>
           </div>
 
           {/* Call Button */}
           <button
             aria-label="Call Divine Laundry"
-            className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-full border border-gray-300 text-gray-600 text-sm hover:text-gray-900 hover:border-gray-400 transition"
+            className="hidden lg:flex items-center gap-2 px-4 py-2 rounded-full border border-gray-300 text-gray-600 text-sm hover:text-gray-900 hover:border-gray-400 transition"
           >
             <Phone size={14} />
-            <span className="hidden md:inline">Call Now</span>
+            <span>Call Now</span>
           </button>
 
           {/* CTA */}
-          <button className="px-5 py-2 rounded-full text-xs md:text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 transition shadow-md shadow-blue-500/20">
+          <button className="hidden sm:block px-4 sm:px-5 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs md:text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 transition shadow-md shadow-blue-500/20 whitespace-nowrap">
             Order Now
           </button>
 
           {/* Mobile Toggle */}
           <button
             aria-label="Toggle menu"
-            className="lg:hidden p-2 text-gray-700 hover:text-gray-900"
+            className="lg:hidden p-1 sm:p-1.5 text-gray-700 hover:text-gray-900 focus:outline-none"
             onClick={toggleMenu}
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            {isOpen ? <X size={20} className="w-5 h-5 sm:w-6 sm:h-6" /> : <Menu size={20} className="w-5 h-5 sm:w-6 sm:h-6" />}
           </button>
         </div>
       </div>

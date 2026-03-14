@@ -42,7 +42,7 @@ const AboutSection = () => {
   ];
 
   return (
-    <section className="relative overflow-hidden bg-[#fafafa] py-24 px-6 lg:px-24">
+    <section id="about" className="relative overflow-hidden bg-[#fafafa] py-24 px-6 lg:px-24">
       {/* Decorative Background Blobs */}
       <div className="absolute top-0 -left-20 w-96 h-96 bg-purple-200/40 rounded-full blur-3xl" />
       <div className="absolute bottom-0 -right-20 w-96 h-96 bg-blue-200/30 rounded-full blur-3xl" />
@@ -59,7 +59,7 @@ const AboutSection = () => {
             </h3>
           </div>
           <p className="max-w-xs text-slate-500 text-lg leading-relaxed border-l-2 border-purple-200 pl-6">
-            Providing Chennai with professional garment care since 2019. 
+            Providing Chennai with professional garment care since 2019.
             Freshness, delivered to your door.
           </p>
         </div>
@@ -87,7 +87,7 @@ const AboutSection = () => {
           <StatBlock number="1k+" label="Happy Clients" />
           <div className="hidden md:block h-12 w-[1px] bg-slate-200" />
           <StatBlock number="4.9" label="Avg Rating" isStar />
-          
+
           <button className="bg-purple-700 text-white px-8 py-4 rounded-full font-bold flex items-center gap-3 hover:bg-purple-800 transition-all hover:shadow-lg hover:px-10">
             Book a Wash <ArrowRight size={20} />
           </button>
