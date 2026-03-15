@@ -6,4 +6,4 @@ const Pricing = () => {
   )
 }
 
-export default Pricinga
+export default Pricingaaa
